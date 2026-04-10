@@ -2,9 +2,16 @@ disableactionsbygroup Plugin for DokuWiki
 
 Prevent actions by user group
 
+Maintained fork:
+https://github.com/brozkeff/dokuwiki-plugin-disableactionsbygroup
+
+Original plugin page:
+https://www.dokuwiki.org/plugin:disableactionsbygroup
+
 
 ----
 Copyright (C) Andreas Hansson
+Copyright (C) Martin Malec
 Based on denyactions by Otto Vainio <otto@valjakko.net>
 
 This program is free software; you can redistribute it and/or modify
