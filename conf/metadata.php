@@ -1,10 +1,9 @@
 <?php
+
 /**
  * Options for the disableactionsbygroup plugin
  *
- * @author Andreas Hansson
+ * @license GPL-2.0-only
  */
 
-
-$meta['disableactionsbygroup'] = array('Actions to disable for users by groups');
-
+$meta['disableactionsbygroup'] = ['string'];

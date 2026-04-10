@@ -1,13 +1,12 @@
 <?php
+
 /**
- * english language file for disableactionsbygroup plugin
+ * English language file for disableactionsbygroup plugin
  *
- * @author Andreas Hansson
+ * @license GPL-2.0-only
  */
 
-// keys need to match the config setting name
-$lang['disableactionsbygroup'] = 'Semicolon separated list of group:actions where actions is a comma separated list of actions to reject; first matching user group is used and further matches ignored.<br />(index, media, recent, ...) <a target="blank" href="http://www.dokuwiki.org/devel:action_modes">list of actions</a>';
-
-
-
-
+$lang['disableactionsbygroup'] = 'Semicolon-separated list of group:actions pairs where actions is a comma-separated '
+    . 'list of actions to reject. The first matching user group is used and further matches are ignored.'
+    . '<br />(index, media, recent, ...) <a target="_blank" rel="noopener noreferrer" '
+    . 'href="https://www.dokuwiki.org/devel:action_modes">list of actions</a>';

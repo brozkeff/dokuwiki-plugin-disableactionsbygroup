@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Default settings for the disableactionsbygroup plugin
  *
- * @author Andreas Hansson
+ * @license GPL-2.0-only
  */
 
-$conf['disableactionsbygroup']    = '';
+$conf['disableactionsbygroup'] = '';
