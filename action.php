@@ -4,6 +4,7 @@
  * DokuWiki Plugin disableactionsbygroup (Action Component)
  *
  * @license GPL-2.0-only
+ * @author  Andreas Hansson
  */
 
 if (!defined('DOKU_INC')) {

@@ -4,6 +4,7 @@
  * English language file for disableactionsbygroup plugin
  *
  * @license GPL-2.0-only
+ * @author Andreas Hansson
  */
 
 $lang['disableactionsbygroup'] = 'Semicolon-separated list of group:actions pairs where actions is a comma-separated '
