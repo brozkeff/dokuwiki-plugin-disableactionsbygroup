@@ -1,7 +1,6 @@
 base   disableactionsbygroup
-author Andreas Hansson
-author Martin Malec
-email  none
+author Andreas Hansson, Martin Malec
+email  martin@brozkeff.net
 date   2026-04-10
 name   disable actions by group plugin
 desc   Prevent specific actions by user group
