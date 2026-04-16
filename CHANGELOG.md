@@ -8,7 +8,7 @@ and this project follows a maintained-fork style changelog. Early upstream
 history is summarized from the existing git log because older releases were not
 documented in a changelog file.
 
-## [Unreleased]
+## [2026-04-16]
 
 ### Added
 
@@ -39,6 +39,8 @@ documented in a changelog file.
 - No full DokuWiki-integrated automated test harness exists in the repository
   yet. Current coverage is a lightweight PHP regression script plus targeted
   smoke verification.
+
+## [Unreleased]
 
 ## [2026-04-10]
 
