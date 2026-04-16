@@ -7,7 +7,7 @@ forked version inherits the global disableactions and is additive to it. This
 is a breaking change in behaviour compared to the upstream version - you have been
 warned!
 
-This fork (forked from upstream commit 5fe46cc dated 2020-08-28):
+This fork (forked from upstream commit 5fe46cc dated 2023-03-12):
 <https://github.com/brozkeff/dokuwiki-plugin-disableactionsbygroup>
 
 Upstream version:
