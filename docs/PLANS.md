@@ -12,7 +12,7 @@ Implemented work was moved into the durable records:
 - [CHANGELOG.md](../CHANGELOG.md) for release history and versioned changes
 - [ADR 0003](./decisions/0003%20Additive%20Disableactions%20Semantics.md) for
   the normative runtime contract and implementation rationale
-- [tests/regression.php](../tests/regression.php) for lightweight regression
-  verification of the additive behavior
+- [_test/ActionPluginTest.php](../_test/ActionPluginTest.php) for DokuWiki
+  plugin-level verification of the additive behavior
 
 No further plan items remain for this bug in this file.

@@ -89,10 +89,12 @@ This fork adds small maintenance updates since the upstream release:
 
 ## Validation
 
-Run the lightweight regression checks with:
+Run the DokuWiki plugin tests from a DokuWiki checkout `_test` environment, for
+example:
 
 ```bash
-php tests/regression.php
+cd dokuwiki/_test
+composer run test -- --group plugin_disableactionsbygroup
 ```
 
 ## Credits

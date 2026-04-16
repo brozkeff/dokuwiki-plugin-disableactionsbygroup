@@ -16,8 +16,8 @@ documented in a changelog file.
   `disableactions` remains enforced for all groups.
 - `docs/decisions/` ADR set for fork scope, modernization rationale, and the
   planned additive `disableactions` behavior.
-- lightweight PHP regression coverage in `tests/regression.php` for additive
-  merge behavior, malformed entries, and `ALL` handling
+- DokuWiki-style plugin test coverage in `_test/ActionPluginTest.php` for
+  additive merge behavior, malformed entries, and `ALL` handling
 
 ### Changed
 
@@ -37,8 +37,8 @@ documented in a changelog file.
 ### Known Issues
 
 - No full DokuWiki-integrated automated test harness exists in the repository
-  yet. Current coverage is a lightweight PHP regression script plus targeted
-  smoke verification.
+  yet. Current coverage is plugin-level `_test` coverage plus targeted smoke
+  verification.
 
 ## [Unreleased]
 
