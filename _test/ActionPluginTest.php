@@ -1,12 +1,5 @@
 <?php
 
-/**
- * PHPUnit coverage for the disableactionsbygroup action plugin.
- *
- * @group plugin_disableactionsbygroup
- * @group plugins
- */
-
 namespace dokuwiki\plugin\disableactionsbygroup\test;
 
 use DokuWikiTest;
@@ -40,13 +33,14 @@ class TestableActionPlugin extends \action_plugin_disableactionsbygroup
     /**
      * Return a mocked configuration value.
      *
-     * @param string $key Configuration key.
+     * @param string $setting Configuration key.
+     * @param mixed  $notset Fallback value when the key is missing.
      *
-     * @return string
+     * @return mixed
      */
-    public function getConf($key)
+    public function getConf($setting, $notset = false)
     {
-        return $this->mockConfig[$key] ?? '';
+        return $this->mockConfig[$setting] ?? $notset;
     }
 
     /**
@@ -69,6 +63,9 @@ class TestableActionPlugin extends \action_plugin_disableactionsbygroup
 
 /**
  * Integration-style unit tests for additive disableactions behavior.
+ *
+ * @group plugin_disableactionsbygroup
+ * @group plugins
  */
 class ActionPluginTest extends DokuWikiTest
 {
