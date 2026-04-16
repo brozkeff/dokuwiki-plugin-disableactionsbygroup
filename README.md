@@ -1,29 +1,38 @@
-# disableactionsbygroup Plugin for DokuWiki
+# disableactionsbygroup-additive Plugin for DokuWiki
 
 This plugin lets you restrict selected DokuWiki actions for specific user groups.
 It extends DokuWiki's generic `disableactions` setting with group-based rules and
-applies only the first matching group entry.
+applies only the first matching group entry. Compared to the upstream version this
+forked version inherits the global disableactions and is additive to it. This
+is a breaking change in behaviour compared to the upstream version - you have been
+warned!
 
-Maintained fork:
+This fork:
 <https://github.com/brozkeff/dokuwiki-plugin-disableactionsbygroup>
 
-Official documentation:
+Upstream version:
+<https://github.com/adron1111/disableactionsbygroup>
+
+Official documentation for the upstream version:
 <https://www.dokuwiki.org/plugin:disableactionsbygroup>
+- note the different behaviour of this fork as described below.
 
 ## Project Status
 
-This repository is a maintained fork. Project history and release notes are
-tracked in [CHANGELOG.md](./CHANGELOG.md), and the long-term rationale for fork
+This repository is a fork of adron1111's upstream plugin.
+Project history and release notes are tracked in [CHANGELOG.md](./CHANGELOG.md),
+and the long-term rationale for fork
 and behavior decisions is tracked in [docs/decisions](./docs/decisions/).
 
 ## Upgrade Note
 
-Version `2026-04-10` had a major inherited bug: when a configured group
-matched, the plugin replaced DokuWiki's global `disableactions` setting instead
+Version `2026-04-10` had a major inherited bug (which may be considered as feature:
+by some others): when a configured group matched, the plugin replaced DokuWiki's
+global `disableactions` setting instead
 of only adding further restrictions. That bug is fixed in the current
 repository state.
 
-If you upgrade from `2026-04-10`, review deployments that may have relied on
+If you upgrade from upstream version, review deployments that may have relied on
 buggy override behavior. Empty rules such as `admin:` or `author:` now mean
 "no additional restrictions" for the matching group, while global DokuWiki
 `disableactions` remains enforced.
@@ -108,6 +117,7 @@ Current status:
 ## Credits
 
 Copyright (C) 2016-2023 Andreas Hansson
+
 Copyright (C) 2026 Martin Malec
 
 Based on denyactions by Otto Vainio <otto@valjakko.net>
