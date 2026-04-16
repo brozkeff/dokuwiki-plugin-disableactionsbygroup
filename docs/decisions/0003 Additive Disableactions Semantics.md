@@ -1,15 +1,8 @@
 ---
 status: Accepted
 date: 2026-04-16
-deciders:
-  - Martin Malec
-consulted:
-  - ADR 0001
-  - docs/PLANS.md
-  - upstream git history
-informed:
-  - fork users
 ---
+
 # ADR 0003: Additive Disableactions Semantics
 
 ## Context and Problem Statement

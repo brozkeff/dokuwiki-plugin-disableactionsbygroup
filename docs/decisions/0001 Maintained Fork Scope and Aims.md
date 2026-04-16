@@ -1,14 +1,8 @@
 ---
 status: Accepted
 date: 2026-04-16
-deciders:
-  - Martin Malec
-consulted:
-  - README.md
-  - upstream git history
-informed:
-  - fork users
 ---
+
 # ADR 0001: Maintained Fork Scope and Aims
 
 ## Context and Problem Statement

@@ -1,15 +1,8 @@
 ---
 status: Accepted
 date: 2026-04-10
-deciders:
-  - Martin Malec
-consulted:
-  - ADR 0001
-  - action.php
-  - plugin.info.txt
-informed:
-  - fork users
 ---
+
 # ADR 0002: Modernization Baseline for Maintained Fork
 
 ## Context and Problem Statement
