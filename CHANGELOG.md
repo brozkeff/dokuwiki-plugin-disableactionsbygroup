@@ -33,12 +33,21 @@ documented in a changelog file.
 - Applied the same additive rule to the `ALL` failed-login path.
 - Normalized merged action lists by trimming empty items and removing
   duplicates.
+- Removed the deprecated legacy core action include from `action.php` so the
+  plugin no longer triggers current DokuWiki deprecation warnings during tests.
+- Fixed `_test` compatibility for current DokuWiki and PHPUnit by updating the
+  mocked `getConf()` signature and attaching the plugin test group annotations
+  to the real test class.
 
 ### Known Issues
 
-- No full DokuWiki-integrated automated test harness exists in the repository
-  yet. Current coverage is plugin-level `_test` coverage plus targeted smoke
-  verification.
+- No broader integration coverage exists yet beyond the plugin-level `_test`
+  suite for additive behavior and configuration parsing.
+
+### Verified
+
+- Plugin test group `plugin_disableactionsbygroup` passes in a real DokuWiki
+  `_test` environment with `6` tests and `6` assertions.
 
 ## [Unreleased]
 
@@ -48,6 +57,7 @@ documented in a changelog file.
 
 - Established the maintained fork metadata, licensing refresh, and repository
   documentation baseline.
+- Using OpenAI Codex AI for the modernization work
 - Modernized the PHP code style and added defensive parsing for malformed
   `disableactionsbygroup` entries without intentionally changing the original
   first-match behavior.

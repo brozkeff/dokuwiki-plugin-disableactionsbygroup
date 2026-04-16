@@ -97,6 +97,14 @@ cd dokuwiki/_test
 composer run test -- --group plugin_disableactionsbygroup
 ```
 
+Current status:
+
+- the plugin test is implemented in `_test/ActionPluginTest.php`
+- the test was verified in a real DokuWiki `_test` environment with `6` tests
+  and `6` assertions passing
+- the plugin no longer uses the deprecated legacy `require(action.php)` pattern
+  that newer DokuWiki test runs warn about
+
 ## Credits
 
 Copyright (C) 2016-2023 Andreas Hansson

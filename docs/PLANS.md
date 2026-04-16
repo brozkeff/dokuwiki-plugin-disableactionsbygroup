@@ -15,4 +15,10 @@ Implemented work was moved into the durable records:
 - [_test/ActionPluginTest.php](../_test/ActionPluginTest.php) for DokuWiki
   plugin-level verification of the additive behavior
 
+Verification status:
+
+- the `_test` plugin suite now runs successfully in a real DokuWiki `_test`
+  checkout
+- current confirmed result: `OK (6 tests, 6 assertions)`
+
 No further plan items remain for this bug in this file.
