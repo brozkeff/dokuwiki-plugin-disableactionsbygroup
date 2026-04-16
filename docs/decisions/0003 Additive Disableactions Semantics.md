@@ -1,5 +1,5 @@
 ---
-status: Proposed
+status: Accepted
 date: 2026-04-16
 deciders:
   - Martin Malec
@@ -57,6 +57,13 @@ The architectural boundary is that DokuWiki core defines the baseline disabled
 actions, while this plugin may only add further restrictions for the first
 matching group. Empty rules such as `admin:` mean no additional restrictions
 for that group; they must not remove core restrictions already in force.
+
+Implementation in the maintained fork captures the original core
+`disableactions` list before plugin mutation, parses both the core and
+group-specific lists into normalized action sets, and writes back a de-duplicated
+merged list only when a group rule matches. This pathway was chosen because it
+preserves the historical first-match selection model while eliminating the
+policy-bypass behavior caused by destructive replacement.
 
 ## Consequences
 

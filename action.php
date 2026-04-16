@@ -41,10 +41,13 @@ class action_plugin_disableactionsbygroup extends DokuWiki_Action_Plugin
      */
     public function handle_post_login(Doku_Event &$event, $param)
     {
+        global $conf;
         global $USERINFO;
 
+        $coreDisabledActions = $this->parse_action_list((string) ($conf['disableactions'] ?? ''));
+
         if (!$event->result) {
-            $this->disablebygroupids(['ALL']);
+            $this->disablebygroupids(['ALL'], $coreDisabledActions);
             return;
         }
 
@@ -53,22 +56,46 @@ class action_plugin_disableactionsbygroup extends DokuWiki_Action_Plugin
             $groupids = $USERINFO['grps'];
         }
 
-        $this->disablebygroupids($groupids);
+        $this->disablebygroupids($groupids, $coreDisabledActions);
     }
 
     /**
-     * Set disabled actions when the current user belongs to a configured group.
+     * Add disabled actions when the current user belongs to a configured group.
      *
-     * The first matching group wins.
+     * The first matching group chooses the extra restrictions to merge with the
+     * global DokuWiki disableactions baseline.
      *
-     * @param array $groupids The groups of the current user.
+     * @param array $groupids            The groups of the current user.
+     * @param array $coreDisabledActions The globally disabled DokuWiki actions.
      *
      * @return void
      */
-    protected function disablebygroupids($groupids)
+    protected function disablebygroupids($groupids, $coreDisabledActions)
     {
         global $conf;
 
+        $matchedActions = $this->find_matching_group_actions((array) $groupids);
+        if ($matchedActions === null) {
+            return;
+        }
+
+        $mergedActions = array_merge(
+            $coreDisabledActions,
+            $this->parse_action_list($matchedActions)
+        );
+
+        $conf['disableactions'] = implode(',', array_values(array_unique($mergedActions)));
+    }
+
+    /**
+     * Return the configured action list for the first matching group.
+     *
+     * @param array $groupids The groups of the current user.
+     *
+     * @return string|null
+     */
+    protected function find_matching_group_actions($groupids)
+    {
         $actionsbygroup = explode(';', (string) $this->getConf('disableactionsbygroup'));
         foreach ($actionsbygroup as $groupandactions) {
             if ($groupandactions === '') {
@@ -80,15 +107,42 @@ class action_plugin_disableactionsbygroup extends DokuWiki_Action_Plugin
                 continue;
             }
 
-            [$group, $action] = $parts;
+            [$group, $actions] = $parts;
+            $group = trim($group);
+            if ($group === '') {
+                continue;
+            }
 
             foreach ((array) $groupids as $membergroup) {
-                if ($membergroup == $group) {
-                    $conf['disableactions'] = $action;
-                    break 2;
+                if ((string) $membergroup === $group) {
+                    return $actions;
                 }
             }
         }
+
+        return null;
+    }
+
+    /**
+     * Parse a comma-separated action list into normalized action names.
+     *
+     * @param string $actions The raw action list.
+     *
+     * @return array
+     */
+    protected function parse_action_list($actions)
+    {
+        $normalized = [];
+        foreach (explode(',', $actions) as $action) {
+            $action = trim($action);
+            if ($action === '') {
+                continue;
+            }
+
+            $normalized[] = $action;
+        }
+
+        return $normalized;
     }
 }
 

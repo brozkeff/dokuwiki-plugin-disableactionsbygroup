@@ -10,6 +10,34 @@ Maintained fork:
 Official documentation:
 <https://www.dokuwiki.org/plugin:disableactionsbygroup>
 
+## Project Status
+
+This repository is a maintained fork. Project history and release notes are
+tracked in [CHANGELOG.md](./CHANGELOG.md), and the long-term rationale for fork
+and behavior decisions is tracked in [docs/decisions](./docs/decisions/).
+
+## Upgrade Note
+
+Version `2026-04-10` had a major inherited bug: when a configured group
+matched, the plugin replaced DokuWiki's global `disableactions` setting instead
+of only adding further restrictions. That bug is fixed in the current
+repository state.
+
+If you upgrade from `2026-04-10`, review deployments that may have relied on
+buggy override behavior. Empty rules such as `admin:` or `author:` now mean
+"no additional restrictions" for the matching group, while global DokuWiki
+`disableactions` remains enforced.
+
+Current behavior:
+
+- any action disabled globally via DokuWiki `disableactions` remains
+  disabled for every group
+- this plugin only adds further disabled actions for the first matching group
+- an empty rule such as `admin:` means "no additional restrictions", not
+  "remove global restrictions"
+- effective action ordering is deterministic: global disabled actions stay
+  first, and first-matching group additions are appended in configured order
+
 ## Usage
 
 Configure a semicolon-separated list of `group:actions` entries in the plugin
@@ -27,6 +55,21 @@ This means:
 - users without a matching group keep whatever is configured in DokuWiki's
   generic `disableactions` setting
 
+Additive example:
+
+- global DokuWiki `disableactions=edit`
+- plugin rule `user:media`
+- effective disabled actions for `user`: `edit,media`
+
+Upgrade verification checklist:
+
+- verify a group with an empty rule such as `admin:` still inherits globally
+  disabled actions
+- verify a matching non-empty group adds actions instead of replacing the
+  global list
+- verify any `ALL:` rule also adds restrictions instead of clearing the global
+  list
+
 Syntax:
 
 ```text
@@ -37,12 +80,20 @@ The order of groups matters. Only the first matching group applies to a user.
 
 ## Fork Notes
 
-This fork keeps the original behavior but adds small maintenance updates since
-the upstream release:
+This fork adds small maintenance updates since the upstream release:
 
 - defensive hardening for malformed configuration entries
 - PHP and plugin code modernization
+- additive merge semantics for global `disableactions` and group-based rules
 - documentation and repository metadata refresh for the maintained fork
+
+## Validation
+
+Run the lightweight regression checks with:
+
+```bash
+php tests/regression.php
+```
 
 ## Credits
 
