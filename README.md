@@ -7,7 +7,7 @@ forked version inherits the global disableactions and is additive to it. This
 is a breaking change in behaviour compared to the upstream version - you have been
 warned!
 
-This fork:
+This fork (forked from upstream commit 5fe46cc dated 2020-08-28):
 <https://github.com/brozkeff/dokuwiki-plugin-disableactionsbygroup>
 
 Upstream version:
@@ -26,7 +26,7 @@ and behavior decisions is tracked in [docs/decisions](./docs/decisions/).
 
 ## Upgrade Note
 
-Version `2026-04-10` had a major inherited bug (which may be considered as feature:
+Upstream had a non-intuitive behaviour / bug (which may be considered as feature
 by some others): when a configured group matched, the plugin replaced DokuWiki's
 global `disableactions` setting instead
 of only adding further restrictions. That bug is fixed in the current
